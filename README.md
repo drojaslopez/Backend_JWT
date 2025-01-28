@@ -1,4 +1,4 @@
-# Desafio_Prueba2_Backend_Node_Express
+# Hito 5 - Implementando JWT en una API REST
 ## Daniel_Rojas
 
 ### Instalacion de PNPM
@@ -34,4 +34,21 @@ pnpm i -D dotenv tsx typescript
 pnpm i -D @types/bcryptjs @types/express @types/jsonwebtoken @types/node
 ```
 ### Evidencia 
+
+Metodo Get Token
+```bash
+http://localhost:3000/auth/login/
+```
+![Get Users](./images/getToken.png)
+
+
+Metodo Get Token
+```bash
+http://localhost:3000/user
+```
+![Get Users](./images/GetUserWithToken.png)
+
+Sin token valido
+
+![Get Users](./images/GetUserWithOutToken.png)
 

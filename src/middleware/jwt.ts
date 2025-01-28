@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import "dotenv/config"
 
 // Quiero extender o modificar el comportamiento de un módulo ya existente.
 declare module "express" {
@@ -7,6 +8,9 @@ declare module "express" {
     email?: string;
   }
 }
+
+const secret = process.env.SECRET;
+
 
 export const verifyToken = (
   req: Request,
@@ -20,7 +24,11 @@ export const verifyToken = (
   }
   const token = authHeader.split(" ")[1];
   try {
-    const payload = jwt.verify(token, "secret") as jwt.JwtPayload;
+    
+    if (!secret) {
+      throw new Error("JWT_SECRET must be provided ");
+    }
+    const payload = jwt.verify(token,secret) as jwt.JwtPayload;
     req.email = payload.email;
     next();
   } catch (error) {
