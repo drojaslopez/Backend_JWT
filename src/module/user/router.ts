@@ -10,15 +10,15 @@ const route = Router();
 route.get("/", userController.getUsers);
 
 // leer un único usuario por id
-route.get("/:id", userController.getUser);
+route.get("/:id",verifyToken, userController.getUser);
 
 // crear un usuario
-route.post("/", userController.createUser); 
+route.post("/",verifyToken, userController.createUser); 
 
 // eliminar un usuario por id
-route.delete("/:id", userController.deleteUser);
+route.delete("/:id",verifyToken, userController.deleteUser);
 
 // actualizar un usuario por id
-route.put("/:id", userController.updateUser);
+route.put("/:id", verifyToken,userController.updateUser);
 
 export default route;

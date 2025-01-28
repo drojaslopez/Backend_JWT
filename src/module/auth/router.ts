@@ -5,7 +5,7 @@ import { verifyToken } from "../../middleware/jwt";
 
 const router = Router();
 
-router.post("/login", authController.login);
+router.get("/login", authController.login);
 
 router.get("/validatetoken", verifyToken, authController.validateToken);
 

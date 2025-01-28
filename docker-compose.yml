@@ -15,7 +15,7 @@ services:
     environment:
       POSTGRES_USER: postgres # Usuario predeterminado de la base de datos
       POSTGRES_PASSWORD: Hito5 # Contraseña del usuario
-      POSTGRES_DB: Hito5 # Nombre de la base de datos que se creará
+      POSTGRES_DB: dbHito5 # Nombre de la base de datos que se creará
 
     # Puertos: mapea el puerto 5432 (dentro del contenedor) al 5434 (en tu máquina host)
     ports:
@@ -26,6 +26,15 @@ services:
       - ./postgres_data:/var/lib/postgresql/data
         # ./postgres-data es una carpeta en tu máquina local
         # /var/lib/postgresql/data es donde PostgreSQL guarda sus datos
+
+#Redis
+#  redis:
+#    image: redis:latest
+#    ports:
+      - "6379:6379"
+#    volumes:
+#      - ./redis_data:/data
+#    command: redis-server --appendonly yes
         
 # mongodb:
 #   image: mongo:latest

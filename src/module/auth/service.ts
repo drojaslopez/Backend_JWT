@@ -1,6 +1,9 @@
+import "dotenv/config"
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { userService } from "../user/service";
+
+const secret = process.env.SECRET ?? null;
 
 const loginWithEmailAndPassword = async (email: string, password: string) => {
   const users = await userService.getUsers();
@@ -18,7 +21,7 @@ const loginWithEmailAndPassword = async (email: string, password: string) => {
   }
 
   // 3. generar el token
-  const token = jwt.sign({ email: user.email }, "secret", {
+  const token = jwt.sign({ email: user.email }, secret, {
     expiresIn: "1h",
   });
 
