@@ -1,4 +1,4 @@
-# Hito 5 - Implementando JWT en una API REST
+# Implementando JWT en una API REST
 ## Daniel_Rojas
 
 ### Instalacion de PNPM
